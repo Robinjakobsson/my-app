@@ -1,8 +1,7 @@
 import Image from "next/image";
-import { players } from "../lib/players";
+import Link from "next/link";
+import { players, playerSlug, PLACEHOLDER_IMAGE } from "../lib/players";
 import { Player, Position } from "../lib/player-model";
-
-const PLACEHOLDER_IMAGE = "/Bollteori-transparent.png";
 
 const positionOrder: Position[] = [
   "Anfallare",
@@ -36,8 +35,9 @@ function StatChip({ label, value }: { label: string; value: string }) {
 
 function PlayerCard({ player, index }: { player: Player; index: number }) {
   return (
-    <div
-      className="group animate-tile-enter overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-xl"
+    <Link
+      href={`/truppen/${playerSlug(player.name)}`}
+      className="group block animate-tile-enter overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/40"
       style={{ animationDelay: `${index * 60}ms` }}
     >
       <div className="relative aspect-[3/4] w-full overflow-hidden bg-gradient-to-br from-accent to-brand-cream/40">
@@ -78,7 +78,7 @@ function PlayerCard({ player, index }: { player: Player; index: number }) {
           <StatChip label="Röd" value={player.red_cards} />
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

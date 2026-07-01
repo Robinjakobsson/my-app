@@ -1,6 +1,19 @@
 import { Player } from "./player-model";
 
-const PLACEHOLDER_IMAGE = "/Bollteori-transparent.png";
+export const PLACEHOLDER_IMAGE = "/Bollteori-transparent.png";
+
+export function playerSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[åä]/g, "a")
+    .replace(/ö/g, "o")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export function getPlayerBySlug(slug: string): Player | undefined {
+  return players.find((p) => playerSlug(p.name) === slug);
+}
 
 export const players: Player[] = [
   {
