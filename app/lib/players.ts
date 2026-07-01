@@ -13,6 +13,7 @@ export const players: Player[] = [
     assists: "16",
     yellow_cards: "0",
     red_cards: "0",
+    mvps: "1",
   },
   {
     name: "Oscar Ponce Johansson",
@@ -23,6 +24,7 @@ export const players: Player[] = [
     assists: "0",
     yellow_cards: "0",
     red_cards: "0",
+    mvps: "0",
   },
   {
     name: "Robin Jakobsson",
@@ -34,6 +36,7 @@ export const players: Player[] = [
     assists: "0",
     yellow_cards: "0",
     red_cards: "0",
+    mvps: "0",
   },
   {
     name: "Filip Rolf-Olsson",
@@ -44,6 +47,7 @@ export const players: Player[] = [
     assists: "2",
     yellow_cards: "0",
     red_cards: "0",
+    mvps: "1",
   },
   {
     name: "Tom Alexandersson",
@@ -54,6 +58,7 @@ export const players: Player[] = [
     assists: "0",
     yellow_cards: "0",
     red_cards: "0",
+    mvps: "0",
   },
   {
     name: "Erik Olsson Lidman",
@@ -65,6 +70,7 @@ export const players: Player[] = [
     assists: "1",
     yellow_cards: "0",
     red_cards: "0",
+    mvps: "0",
   },
   {
     name: "Jesper Berntsson",
@@ -75,6 +81,7 @@ export const players: Player[] = [
     assists: "1",
     yellow_cards: "0",
     red_cards: "3",
+    mvps: "0",
   },
   {
     name: "Linus Söderberg",
@@ -85,6 +92,7 @@ export const players: Player[] = [
     assists: "1",
     yellow_cards: "0",
     red_cards: "0",
+    mvps: "1",
   },
   {
     name: "Mattias Svaner",
@@ -96,6 +104,7 @@ export const players: Player[] = [
     assists: "1",
     yellow_cards: "0",
     red_cards: "0",
+    mvps: "0",
   },
   {
     name: "Rasmus Gustavsson",
@@ -106,6 +115,7 @@ export const players: Player[] = [
     assists: "0",
     yellow_cards: "0",
     red_cards: "0",
+    mvps: "0",
   },
   {
     name: "Rasmus Tell",
@@ -116,6 +126,7 @@ export const players: Player[] = [
     assists: "0",
     yellow_cards: "0",
     red_cards: "0",
+    mvps: "0",
   },
   {
     name: "Gustaf Rådström",
@@ -127,6 +138,7 @@ export const players: Player[] = [
     assists: "0",
     yellow_cards: "1",
     red_cards: "0",
+    mvps: "1",
   },
   {
     name: "Alexander Bergström",
@@ -137,6 +149,7 @@ export const players: Player[] = [
     assists: "3",
     yellow_cards: "1",
     red_cards: "0",
+    mvps: "0",
   },
   {
     name: "Paulo ivarsson",
@@ -147,6 +160,7 @@ export const players: Player[] = [
     assists: "0",
     yellow_cards: "0",
     red_cards: "0",
+    mvps: "0",
   },
   {
     name: "Mike singh",
@@ -157,6 +171,7 @@ export const players: Player[] = [
     assists: "5",
     yellow_cards: "0",
     red_cards: "0",
+    mvps: "0",
   },
   {
     name: "Elias Myrström",
@@ -167,5 +182,6 @@ export const players: Player[] = [
     assists: "0",
     yellow_cards: "0",
     red_cards: "0",
+    mvps: "0",
   },
 ];
