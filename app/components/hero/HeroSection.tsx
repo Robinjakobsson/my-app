@@ -5,7 +5,7 @@ const HeroSection = () => {
   return (
     <section className="relative h-screen w-full overflow-hidden">
       <Image
-        src="/söderberg.png"
+        src="/Söderberg.png"
         alt="Bild på söderberg"
         fill
         priority
