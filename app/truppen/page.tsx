@@ -1,7 +1,9 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { players, playerSlug, PLACEHOLDER_IMAGE } from "../lib/players";
 import { Player, Position } from "../lib/player-model";
+import { useRef } from "react";
 
 const positionOrder: Position[] = [
   "Anfallare",
@@ -86,6 +88,20 @@ export default function SquadPage() {
   const totalGoals = players.reduce((s, p) => s + num(p.goals), 0);
   const totalAssists = players.reduce((s, p) => s + num(p.assists), 0);
 
+  const sectionRefs = useRef<Record<Position, HTMLDivElement | null>>({
+    Anfallare: null,
+    Mittfältare: null,
+    Försvarare: null,
+    Målvakt: null,
+  });
+
+  const scrollTo = (position: Position) => {
+    sectionRefs.current[position]?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   const grouped = positionOrder
     .map((pos) => ({
       position: pos,
@@ -144,11 +160,29 @@ export default function SquadPage() {
           </div>
         </section>
 
+        <section>
+          {grouped.map((position) => (
+            <button
+              onClick={() => scrollTo(position.position)}
+              className="cursor-pointer mt-10 p-2 border rounded-lg m-2 hover:bg-black/5 text-sm animate-tile-enter"
+              key={position.position}
+            >
+              {position.position}
+            </button>
+          ))}
+        </section>
+
         {/* Position sections */}
         {grouped.map(({ position, list }) => {
           const lineGoals = list.reduce((s, p) => s + num(p.goals), 0);
           return (
-            <section key={position} className="mt-12">
+            <section
+              key={position}
+              className="mt-12"
+              ref={(el: HTMLDivElement | null) => {
+                sectionRefs.current[position] = el;
+              }}
+            >
               <div className="mb-6 flex items-end justify-between gap-4 border-b border-border pb-4">
                 <div className="flex text-black items-center gap-4">
                   <div>
