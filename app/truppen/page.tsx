@@ -25,10 +25,10 @@ const hasPhoto = (p: Player) => p.image !== PLACEHOLDER_IMAGE && p.image !== "";
 function StatChip({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex flex-col items-center rounded-lg bg-muted/70 px-2 py-1.5">
-      <span className="text-base font-anton leading-none tabular-nums ">
+      <span className="text-base  leading-none tabular-nums ">
         {value}
       </span>
-      <span className="mt-0.5 text-[9px] font-anton uppercase tracking-wider ">
+      <span className="mt-0.5 text-[9px] uppercase tracking-wider ">
         {label}
       </span>
     </div>
