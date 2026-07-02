@@ -7,9 +7,6 @@ const SponsorsPage = () => {
       <div className="mx-auto w-full max-w-5xl">
         {/* Header */}
         <header className="mb-12 text-center">
-          <p className="mb-2 text-xs font-bold uppercase tracking-[0.25em] text-brand-green-mid">
-            Sponsorer 2026
-          </p>
           <h1 className="font-anton text-5xl uppercase leading-none text-brand-green md:text-6xl">
             Våra sponsorer
           </h1>
