@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -28,21 +27,6 @@ const HeroSection = () => {
         <p className="mt-6 max-w-xl animate-fade-in-up text-lg text-white/90 [animation-delay:240ms] sm:text-xl">
           Följ truppen, statistiken och allt som händer på och utanför planen.
         </p>
-
-        <div className="mt-10 flex animate-fade-in-up flex-col gap-4 [animation-delay:360ms] sm:flex-row">
-          <Link
-            href="/truppen"
-            className="rounded-full bg-white px-8 py-3 text-base font-semibold text-black shadow-lg transition-transform hover:scale-105 active:scale-95"
-          >
-            Se truppen
-          </Link>
-          <Link
-            href="/statistik"
-            className="rounded-full border border-white/60 px-8 py-3 text-base font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
-          >
-            Statistik
-          </Link>
-        </div>
       </div>
     </section>
   );
