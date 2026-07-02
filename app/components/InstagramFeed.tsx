@@ -32,9 +32,6 @@ const InstagramFeed = () => {
     <section className="bg-white py-20">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-8 text-center">
-          <p className="mb-2 text-xs font-bold uppercase tracking-[0.25em] text-brand-green/60">
-            @bollteori
-          </p>
           <h2 className="font-anton text-4xl uppercase text-brand-green md:text-5xl">
             Följ oss på Instagram
           </h2>
