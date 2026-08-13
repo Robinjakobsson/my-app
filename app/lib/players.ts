@@ -53,7 +53,7 @@ export const players: Player[] = [
   },
   {
     name: "Filip Rolf-Olsson",
-    image: PLACEHOLDER_IMAGE,
+    image: '/Rolf.jpg',
     position: "Mittfältare",
     description: "Mer känd som Mr. Monke… ~150 cm",
     goals: "5",
