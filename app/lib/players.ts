@@ -35,7 +35,7 @@ export const players: Player[] = [
     description: "Herr Krabba",
     goals: "5",
     assists: "1",
-    yellow_cards: "0",
+    yellow_cards: "1",
     red_cards: "0",
     mvps: "0",
   },
