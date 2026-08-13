@@ -113,7 +113,7 @@ export const players: Player[] = [
     position: "Mittfältare",
     description:
       "Lagets lokomotiv, Kanske den ända i laget med en kapacitet att springa mer än 3km oavbrutet.",
-    goals: "1",
+    goals: "2",
     assists: "1",
     yellow_cards: "0",
     red_cards: "0",
@@ -135,7 +135,7 @@ export const players: Player[] = [
     image: "/Rasmus_tell.jpg",
     position: "Mittfältare",
     description: "Är ofta på semester...",
-    goals: "1",
+    goals: "2",
     assists: "2",
     yellow_cards: "0",
     red_cards: "0",
