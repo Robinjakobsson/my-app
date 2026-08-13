@@ -71,7 +71,7 @@ export const players: Player[] = [
     assists: "0",
     yellow_cards: "0",
     red_cards: "0",
-    mvps: "0",
+    mvps: "5",
   },
   {
     name: "Erik Olsson Lidman",
