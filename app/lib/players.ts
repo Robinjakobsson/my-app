@@ -158,7 +158,7 @@ export const players: Player[] = [
     image: PLACEHOLDER_IMAGE,
     position: "Anfallare",
     description: "",
-    goals: "3",
+    goals: "5",
     assists: "3",
     yellow_cards: "1",
     red_cards: "0",
