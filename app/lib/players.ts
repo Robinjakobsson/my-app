@@ -87,7 +87,7 @@ export const players: Player[] = [
   },
   {
     name: "Jesper Berntsson",
-    image: PLACEHOLDER_IMAGE,
+    image: '/Jeppe.jpg',
     position: "Målvakt",
     description: "Fjärdemålis och maskot med ansvar för trams.",
     goals: "0",
