@@ -13,5 +13,8 @@ export type Player = {
   assists: string;
   yellow_cards: string;
   red_cards: string;
+  holding_thenulls?: string;
+  amountofSaves?: string;
+  amountofGlidTackles?: string;
   mvps: string;
 };

@@ -15,6 +15,8 @@ const chartConfig = {
   goals: { label: "Mål", color: "#043b1e" },
   assists: { label: "Assists", color: "#10b981" },
   mvps: { label: "MVP", color: "#d4a017" },
+  glidtackles: { label: "Glidtacklingar", color: "#0ea5e9" },
+  saves: { label: "Räddningar", color: "#8b5cf6" },
   yellow: { label: "Gula kort", color: "#facc15" },
   red: { label: "Röda kort", color: "#dc2626" },
 } satisfies ChartConfig;
@@ -27,6 +29,8 @@ const data = [...players]
     goals: num(p.goals),
     assists: num(p.assists),
     mvps: num(p.mvps),
+    glidtackles: num(p.amountofGlidTackles ?? "0"),
+    saves: num(p.amountofSaves ?? "0"),
     yellow: num(p.yellow_cards),
     red: num(p.red_cards),
   }))
@@ -80,6 +84,8 @@ const StatisticsPage = () => {
                 <Bar dataKey="goals" fill="var(--color-goals)" radius={[3, 3, 0, 0]} />
                 <Bar dataKey="assists" fill="var(--color-assists)" radius={[3, 3, 0, 0]} />
                 <Bar dataKey="mvps" fill="var(--color-mvps)" radius={[3, 3, 0, 0]} />
+                <Bar dataKey="glidtackles" fill="var(--color-glidtackles)" radius={[3, 3, 0, 0]} />
+                <Bar dataKey="saves" fill="var(--color-saves)" radius={[3, 3, 0, 0]} />
                 <Bar dataKey="yellow" fill="var(--color-yellow)" radius={[3, 3, 0, 0]} />
                 <Bar dataKey="red" fill="var(--color-red)" radius={[3, 3, 0, 0]} />
               </BarChart>

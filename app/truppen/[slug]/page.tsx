@@ -21,7 +21,7 @@ export function generateStaticParams() {
   return players.map((p) => ({ slug: playerSlug(p.name) }));
 }
 
-const maxOf = (key: "goals" | "assists" | "mvps") =>
+const maxOf = (key: "goals" | "assists" | "mvps" | "holding_thenulls" | "amountofSaves" | "amountofGlidTackles") =>
   Math.max(...players.map((p) => num(p[key])), 1);
 
 export default async function PlayerDetailPage({
@@ -40,22 +40,48 @@ export default async function PlayerDetailPage({
   const assists = num(player.assists);
   const mvps = num(player.mvps);
   const points = goals + assists;
+  const isGoalkeeper = player.position === "Målvakt";
+  const cleanSheets = num(player.holding_thenulls ?? "0");
+  const saves = num(player.amountofSaves ?? "0");
+  const glidtackles = num(player.amountofGlidTackles ?? "0");
+  const hasGlidtackles = player.amountofGlidTackles !== undefined;
   const hasPhoto = player.image !== PLACEHOLDER_IMAGE && player.image !== "";
 
-  const bars = [
-    { key: "MÅL", label: "Mål", value: goals, max: maxOf("goals") },
-    { key: "AST", label: "Assist", value: assists, max: maxOf("assists") },
-    { key: "MVP", label: "Man of the Match", value: mvps, max: maxOf("mvps") },
-  ];
+  const bars = isGoalkeeper
+    ? [
+        { key: "RÄD", label: "Räddningar", value: saves, max: maxOf("amountofSaves") },
+        { key: "HN", label: "Hållna nollor", value: cleanSheets, max: maxOf("holding_thenulls") },
+        { key: "MVP", label: "Man of the Match", value: mvps, max: maxOf("mvps") },
+      ]
+    : [
+        { key: "MÅL", label: "Mål", value: goals, max: maxOf("goals") },
+        { key: "AST", label: "Assist", value: assists, max: maxOf("assists") },
+        { key: "MVP", label: "Man of the Match", value: mvps, max: maxOf("mvps") },
+        ...(hasGlidtackles
+          ? [{ key: "GLT", label: "Glidtacklingar", value: glidtackles, max: maxOf("amountofGlidTackles") }]
+          : []),
+      ];
 
-  const careerStats = [
-    { label: "Mål", value: goals },
-    { label: "Assist", value: assists },
-    { label: "MVP", value: mvps },
-    { label: "Målpoäng", value: points },
-    { label: "Gula kort", value: num(player.yellow_cards) },
-    { label: "Röda kort", value: num(player.red_cards) },
-  ];
+  const careerStats = isGoalkeeper
+    ? [
+        { label: "Räddningar", value: saves },
+        { label: "Hållna nollor", value: cleanSheets },
+        { label: "MVP", value: mvps },
+        { label: "Gula kort", value: num(player.yellow_cards) },
+        { label: "Röda kort", value: num(player.red_cards) },
+        ...(hasGlidtackles ? [{ label: "Glidtacklingar", value: glidtackles }] : []),
+      ]
+    : [
+        { label: "Mål", value: goals },
+        { label: "Assist", value: assists },
+        { label: "MVP", value: mvps },
+        { label: "Målpoäng", value: points },
+        { label: "Gula kort", value: num(player.yellow_cards) },
+        { label: "Röda kort", value: num(player.red_cards) },
+      ];
+
+  const highlightValue = isGoalkeeper ? saves : points;
+  const highlightLabel = isGoalkeeper ? "Räddningar" : "Målpoäng";
 
   return (
     <main className="min-h-screen w-full bg-muted/40 px-4 pb-16 pt-24">
@@ -89,10 +115,10 @@ export default async function PlayerDetailPage({
               <div className="relative z-10 flex items-start gap-5 md:gap-7">
                 <div className="flex shrink-0 flex-col items-center">
                   <span className="font-anton text-6xl leading-none text-brand-cream md:text-7xl">
-                    {points}
+                    {highlightValue}
                   </span>
                   <span className="mt-1 text-xs font-bold uppercase tracking-widest text-brand-cream/70">
-                    Målpoäng
+                    {highlightLabel}
                   </span>
                   <span className="mt-2 rounded-md bg-brand-cream/15 px-2 py-0.5 text-xs font-black uppercase tracking-wider text-brand-cream">
                     {positionAbbrev[player.position]}
@@ -210,10 +236,10 @@ export default async function PlayerDetailPage({
             </h2>
             <div className="mt-4 flex items-center justify-between rounded-xl border border-brand-green/15 bg-brand-green/5 p-5">
               <span className="text-sm font-medium text-neutral-700 md:text-base">
-                Totala målpoäng (mål + assist)
+                {isGoalkeeper ? "Totala räddningar" : "Totala målpoäng (mål + assist)"}
               </span>
               <span className="font-anton text-4xl tabular-nums text-brand-green">
-                {points}
+                {isGoalkeeper ? saves : points}
               </span>
             </div>
           </div>
