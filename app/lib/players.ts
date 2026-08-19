@@ -22,7 +22,7 @@ export const players: Player[] = [
     position: "Försvarare",
     description:
       "Den här killen ville vinna troféer så då anslöt han sig till Bollteori för att ta hem den största troféen av alla, Korpen Trofén",
-    goals: "16",
+    goals: "17",
     assists: "20",
     yellow_cards: "0",
     red_cards: "0",
@@ -191,7 +191,7 @@ export const players: Player[] = [
     image: "/Elias_myrström.jpg",
     position: "Anfallare",
     description: "",
-    goals: "3",
+    goals: "4",
     assists: "1",
     yellow_cards: "0",
     red_cards: "0",
