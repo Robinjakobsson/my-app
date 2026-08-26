@@ -8,7 +8,7 @@ import {
   PLACEHOLDER_IMAGE,
 } from "../../lib/players";
 
-const num = (v: string) => Number(v) || 0;
+const num = (v: string | undefined) => Number(v) || 0;
 
 const positionAbbrev: Record<string, string> = {
   Anfallare: "ANF",
