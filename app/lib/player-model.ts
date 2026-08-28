@@ -16,5 +16,6 @@ export type Player = {
   holding_thenulls?: string;
   amountofSaves?: string;
   amountofGlidTackles?: string;
+  matches_played?: string;
   mvps: string;
 };

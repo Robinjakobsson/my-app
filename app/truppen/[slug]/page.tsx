@@ -39,12 +39,14 @@ export default async function PlayerDetailPage({
   const goals = num(player.goals);
   const assists = num(player.assists);
   const mvps = num(player.mvps);
+  const matchesPlayed = num(player.matches_played ?? "0");
   const points = goals + assists;
   const isGoalkeeper = player.position === "Målvakt";
   const cleanSheets = num(player.holding_thenulls ?? "0");
   const saves = num(player.amountofSaves ?? "0");
   const glidtackles = num(player.amountofGlidTackles ?? "0");
   const hasGlidtackles = player.amountofGlidTackles !== undefined;
+  const hasMatchesPlayed = player.matches_played !== undefined;
   const hasPhoto = player.image !== PLACEHOLDER_IMAGE && player.image !== "";
 
   const bars = isGoalkeeper
@@ -67,6 +69,7 @@ export default async function PlayerDetailPage({
         { label: "Räddningar", value: saves },
         { label: "Hållna nollor", value: cleanSheets },
         { label: "MVP", value: mvps },
+        ...(hasMatchesPlayed ? [{ label: "Matcher", value: matchesPlayed }] : []),
         { label: "Gula kort", value: num(player.yellow_cards) },
         { label: "Röda kort", value: num(player.red_cards) },
         ...(hasGlidtackles ? [{ label: "Glidtacklingar", value: glidtackles }] : []),
@@ -75,6 +78,7 @@ export default async function PlayerDetailPage({
         { label: "Mål", value: goals },
         { label: "Assist", value: assists },
         { label: "MVP", value: mvps },
+        ...(hasMatchesPlayed ? [{ label: "Matcher", value: matchesPlayed }] : []),
         { label: "Målpoäng", value: points },
         { label: "Gula kort", value: num(player.yellow_cards) },
         { label: "Röda kort", value: num(player.red_cards) },
