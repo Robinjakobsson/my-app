@@ -24,11 +24,11 @@ const hasPhoto = (p: Player) => p.image !== PLACEHOLDER_IMAGE && p.image !== "";
 
 function StatChip({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex flex-col items-center rounded-lg bg-muted/70 px-2 py-1.5">
-      <span className="text-base  leading-none tabular-nums ">
+    <div className="flex flex-col items-center rounded-xl border border-brand-green/10 bg-brand-green/[0.04] px-2 py-2 transition-colors group-hover:bg-brand-green/[0.07]">
+      <span className="font-anton text-lg leading-none tabular-nums text-brand-green">
         {value}
       </span>
-      <span className="mt-0.5 text-[9px] uppercase tracking-wider ">
+      <span className="mt-1 text-[9px] font-semibold uppercase tracking-wider text-neutral-500">
         {label}
       </span>
     </div>
@@ -39,10 +39,10 @@ function PlayerCard({ player, index }: { player: Player; index: number }) {
   return (
     <Link
       href={`/truppen/${playerSlug(player.name)}`}
-      className="group block animate-tile-enter overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/40"
+      className="group block animate-tile-enter overflow-hidden rounded-3xl border border-brand-green/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/40"
       style={{ animationDelay: `${index * 60}ms` }}
     >
-      <div className="relative aspect-[3/4] w-full overflow-hidden bg-gradient-to-br from-accent to-brand-cream/40">
+      <div className="relative aspect-[3/4] w-full overflow-hidden bg-brand-cream/40">
         {hasPhoto(player) ? (
           <Image
             src={player.image}
@@ -59,17 +59,17 @@ function PlayerCard({ player, index }: { player: Player; index: number }) {
           </div>
         )}
 
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-4 pt-10">
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent p-4 pt-14">
+          <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-cream/80">
+            {player.position}
+          </p>
           <h3 className="font-anton text-xl uppercase leading-tight text-white drop-shadow-md">
             {player.name}
           </h3>
-          <p className="text-[11px] font-anton uppercase tracking-widest text-brand-cream/90">
-            FC Bollteori
-          </p>
         </div>
       </div>
 
-      <div className="space-y-3 p-4">
+      <div className="space-y-4 p-4">
         <p className="min-h-[2.5rem] text-sm leading-relaxed text-neutral-500 line-clamp-2">
           {player.description || "Ingen beskrivning ännu."}
         </p>
@@ -160,14 +160,18 @@ export default function SquadPage() {
           </div>
         </section>
 
-        <section>
+        <section className="mt-8 flex flex-wrap justify-center gap-2">
           {grouped.map((position) => (
             <button
+              type="button"
               onClick={() => scrollTo(position.position)}
-              className="cursor-pointer mt-10 p-2 border rounded-lg m-2 hover:bg-black/5 text-sm animate-tile-enter"
+              className="group animate-tile-enter cursor-pointer rounded-full border border-brand-green/15 bg-white/75 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-brand-green shadow-sm transition-all hover:border-brand-green/35 hover:bg-brand-green hover:text-brand-cream focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/40"
               key={position.position}
             >
-              {position.position}
+              <span className="mr-1.5 text-brand-green/45 transition-colors group-hover:text-brand-cream/70">
+                {positionMeta[position.position].abbrev}
+              </span>
+              {positionMeta[position.position].blurb}
             </button>
           ))}
         </section>
@@ -178,20 +182,19 @@ export default function SquadPage() {
           return (
             <section
               key={position}
-              className="mt-12"
+              className="mt-12 scroll-mt-24"
               ref={(el: HTMLDivElement | null) => {
                 sectionRefs.current[position] = el;
               }}
             >
-              <div className="mb-6 flex items-end justify-between gap-4 border-b border-border pb-4">
-                <div className="flex text-black items-center gap-4">
+              <div className="mb-6 flex items-end justify-between gap-4 border-b border-border pb-3">
+                <div className="flex items-center gap-3">
                   <div>
-                    <h2 className="font-anton text-2xl uppercase text-black md:text-3xl">
+                    <h2 className="font-anton text-xl uppercase leading-none text-brand-green md:text-2xl">
                       {position}
                     </h2>
-                    <p className="mt-0.5 font-anton text-sm text-black">
-                      {positionMeta[position].blurb} · {list.length} spelare ·{" "}
-                      {lineGoals} mål
+                    <p className="mt-1 text-xs font-medium uppercase tracking-wider text-neutral-500">
+                      {list.length} spelare · {lineGoals} mål
                     </p>
                   </div>
                 </div>

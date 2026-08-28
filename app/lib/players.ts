@@ -169,7 +169,7 @@ export const players: Player[] = [
     assists: "0",
     yellow_cards: "1",
     red_cards: "0",
-    matches_played: "60",
+    matches_played: "9",
     mvps: "1",
   },
   {
